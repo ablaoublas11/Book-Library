@@ -180,3 +180,51 @@ body {
   padding: 20px;
   font-size: 0.9rem;
 }
+
+@media screen and (max-width: 768px) {
+  .header-container,
+  .main-container,
+  .footer-container {
+    padding: 10px;
+  }
+
+  .header-container .title {
+    font-size: 1.2rem;
+  }
+
+  .header-container .add-book {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .book-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .book-item span {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .book-item button {
+    width: auto;
+    align-self: flex-end;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .insertBook {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .insertBook input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .insertBook button {
+    width: 100%;
+  }
+}
