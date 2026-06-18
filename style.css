@@ -140,6 +140,7 @@ body {
   background-color: var(--bg-cart);
   border: 1px solid var(--border-color);
   padding: 20px;
+  margin: 20px 0;
   border-radius: 8px;
 }
 
@@ -203,12 +204,21 @@ body {
   }
 
   .book-item span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     width: 100%;
     margin-bottom: 10px;
   }
 
+  .book-item span strong{
+    width: 100%;
+    margin-left: 5px;
+    text-align: right;
+  }
+
   .book-item button {
-    width: auto;
+    width: 100%;
     align-self: flex-end;
   }
 }

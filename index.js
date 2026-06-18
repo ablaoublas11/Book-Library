@@ -48,7 +48,7 @@ const app = {
       return;
     }
 
-    this.data.map((item) => {
+    this.data.forEach((item) => {
       const div = document.createElement("div");
       div.className = "book-item";
 
@@ -62,19 +62,19 @@ const app = {
 
       div.append(
         Object.assign(document.createElement("span"), {
-          textContent: item.name,
+          innerHTML: `Title: <strong>${item.name}</strong>`,
         }),
         " ",
         Object.assign(document.createElement("span"), {
-          textContent: item.author,
+          innerHTML: `Author: <strong>${item.author}</strong>`,
         }),
         " ",
         Object.assign(document.createElement("span"), {
-          textContent: item.numOfPages,
+          innerHTML: `Pages: <strong>${item.numOfPages}</strong>`,
         }),
         " ",
         Object.assign(document.createElement("span"), {
-          textContent: item.hasRead,
+          innerHTML: `Read: <strong>${item.hasRead ? "Yes" : "No"}</strong>`,
         }),
         removeBtn,
         toggleBtn,
@@ -84,13 +84,23 @@ const app = {
     });
   },
   remove(id) {
-    this.data = this.data.filter((i) => i.id !== id);
+    // this.data = this.data.filter((i) => i.id !== id);
+
+    const index = this.data.findIndex( i => i.id === id);
+    if (index !== -1){
+      this.data.splice(index, 1);
+    }
     this.render();
   },
   toogleRead(id) {
-    this.data = this.data.map((item) =>
-      item.id === id ? { ...item, hasRead: !item.hasRead } : item,
-    );
+    // this.data = this.data.map((item) =>
+    //   item.id === id ? { ...item, hasRead: !item.hasRead } : item,
+    // );
+
+    const book = this.data.find(i => i.id === id);
+    if(book){
+      book.hasRead = !book.hasRead;
+    }
     this.render();
   },
 };
