@@ -21,27 +21,29 @@ function addBookToLibrary(name, author, numOfPage) {
 const app = {
   data: bookList,
   init() {
-    const name = document.querySelector("#name");
-      const author = document.querySelector("#author");
-      const numOfPages = document.querySelector("#numOfPages");
-    document.querySelector("#addBook").addEventListener("click", () => {
-      // const name = document.querySelector("#name").value;
-      // const author = document.querySelector("#author").value;
-      // const numOfPages = Number(document.querySelector("#numOfPages").value);
-
-      if (!name.value || !author.value || !Number(numOfPages.value)) {
-        alert("Please enter name of the book or author's name or book's pages");
-        return;
-      }
-
-      addBookToLibrary(name.value, author.value, Number(numOfPages.value));
-
-      name.value = "";
-      author.value = "";
-      numOfPages.value = "";
-
-      this.render();
+    const addButton = document.querySelector(".add-book");
+    addButton.addEventListener("click", () => {
+      document.querySelector(".insertBook").classList.toggle("showing");
+      addButton.textContent = addButton.textContent === "Add Book" ? "Close" : "Add Book";
     });
+
+     const name = document.querySelector("#name");
+     const author = document.querySelector("#author");
+     const numOfPages = document.querySelector("#numOfPages");
+     document.querySelector("#addBook").addEventListener("click", () => {
+       if (!name.value || !author.value || !Number(numOfPages.value)) {
+         alert("Please enter name of the book or author's name or book's pages");
+         return;
+       }
+
+       addBookToLibrary(name.value, author.value, Number(numOfPages.value));
+
+       name.value = "";
+       author.value = "";
+       numOfPages.value = "";
+
+       this.render();
+     });
     this.render();
   },
   render() {
