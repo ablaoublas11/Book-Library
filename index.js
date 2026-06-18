@@ -21,17 +21,25 @@ function addBookToLibrary(name, author, numOfPage) {
 const app = {
   data: bookList,
   init() {
+    const name = document.querySelector("#name");
+      const author = document.querySelector("#author");
+      const numOfPages = document.querySelector("#numOfPages");
     document.querySelector("#addBook").addEventListener("click", () => {
-      const name = document.querySelector("#name").value;
-      const author = document.querySelector("#author").value;
-      const numOfPages = Number(document.querySelector("#numOfPages").value);
+      // const name = document.querySelector("#name").value;
+      // const author = document.querySelector("#author").value;
+      // const numOfPages = Number(document.querySelector("#numOfPages").value);
 
-      if (!name || !author || !numOfPages) {
+      if (!name.value || !author.value || !Number(numOfPages.value)) {
         alert("Please enter name of the book or author's name or book's pages");
         return;
       }
 
-      addBookToLibrary(name, author, numOfPages);
+      addBookToLibrary(name.value, author.value, Number(numOfPages.value));
+
+      name.value = "";
+      author.value = "";
+      numOfPages.value = "";
+
       this.render();
     });
     this.render();
