@@ -2,13 +2,13 @@
 const bookList = [];
 
 //Αυτός είναι ο δομητής της Book
-function Book(name, author, numOfPage) {
-  this.id = crypto.randomUUID();
-  this.name = name;
-  this.author = author;
-  this.numOfPages = numOfPage;
-  this.hasRead = false;
-}
+ function Book(name, author, numOfPage) {
+   this.id = crypto.randomUUID();
+   this.name = name;
+   this.author = author;
+   this.numOfPages = numOfPage;
+   this.hasRead = false;
+ }
 
 //μέθοδος για την προσθήκη αντικειμένων στην λίστα
 function addBookToLibrary(name, author, numOfPage) {
