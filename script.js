@@ -10,8 +10,9 @@ class Book{
 }
 
 class Library {
+    #data = [];
     constructor(){
-        this.data = [];
+        this.init();
     }
 
     init(){
@@ -46,7 +47,7 @@ class Library {
       const showingContainer = document.querySelector("#bookShowingArea");
       showingContainer.innerHTML = "";
 
-      if (this.data.length === 0) {
+      if (this.#data.length === 0) {
         const empty = document.createElement("span");
         empty.id = "empty";
         empty.textContent = "Empty book list";
@@ -54,7 +55,7 @@ class Library {
         return;
       }
 
-      this.data.forEach((item) => {
+      this.#data.forEach((item) => {
         const div = document.createElement("div");
         div.className = "book-item";
 
@@ -91,15 +92,15 @@ class Library {
     }
 
     remove(id){
-      const index = this.data.findIndex(i => i.id === id);
+      const index = this.#data.findIndex(i => i.id === id);
       if(index !== -1){
-        this.data.splice(index,1);
+        this.#data.splice(index,1);
       }
       this.render();
     }
 
     toggleRead(id){
-      const book = this.data.find(i => i.id === id);
+      const book = this.#data.find(i => i.id === id);
       if(book){
         book.hasRead = !book.hasRead;
       }
@@ -109,9 +110,9 @@ class Library {
     //Μέθοδος για την προσθήκη ενός βιβλίου στην λίστα μας
     addBookToLibrary(name, author, numOfPage){
       const book = new Book(name, author, numOfPage);
-      this.data.push(book);
+      this.#data.push(book);
     }
 }
 
 const library = new Library();
-library.init();
+//library.init();
